@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 
+import {PostAuthor} from './PostAuthor'
+
 const PostList = () => {
   const posts = useSelector(state => state.posts)
 
@@ -9,6 +11,7 @@ const PostList = () => {
     return (
       <article className="post-excerpt" key={post.id}>
         <h3>{post.title}</h3>
+        <PostAuthor userId={post.user} />
         <p> {post.content.substring(0,100)} </p>
         <Link
           to={`/posts/${post.id}`}
